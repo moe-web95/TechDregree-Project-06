@@ -52,8 +52,19 @@ function checkLetter (button) {
         return match;
 };
 
-qwerty.addEventListener ('click', () =>{
-    
+qwerty.addEventListener ('click', (e) =>{
+    const btn = e.target;
+    if(btn.tagName === 'BUTTON' || btn.className === 'chosen'){
+        btn.className = 'chosen';
+        btn.disabled = true;
+        const letterFound = checkLetter(btn);
+        if (letterFound === null) {
+            const headLost = document.querySelectorAll('.tries img');
+            headLost.src = 'img/lostHeart.png';
+            headLost.className = 'lost';
+            missed++;
+        }
+    }
 });
 
 
