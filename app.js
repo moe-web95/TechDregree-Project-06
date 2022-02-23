@@ -39,3 +39,32 @@ function addPhraseToDisplay (arr) {
     }
 };
 addPhraseToDisplay(PhraseArray);
+
+function checkLetter (button) {
+    const listItems = document.querySelectorAll('li');
+    let match = null;
+    for(let i=0; i<listItems.length; i++){
+        if(button.textContent === listItems[i].textContent.tolowercase()){
+            listItems[i].className = 'show';
+            match = button.textContent;
+        }
+    }
+        return match;
+};
+
+qwerty.addEventListener ('click', () =>{
+    
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
