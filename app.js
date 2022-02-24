@@ -8,8 +8,9 @@ const phrases = [
 ]
 const qwerty = document.getElementById('qwerty');
 const Phrase = document.getElementById('phrase');
-const startGame = document.querySelector('.btn_reset');
+const startGame = document.querySelector('.btn__reset');
 const overlay =  document.getElementById("overlay")
+const title = document.querySelector('.title');
 const ul = document.querySelector('ul');
 let missed = 0;
 
@@ -18,7 +19,7 @@ startGame.addEventListener('click', () =>{
 });
 function getRandomPhraseAsArray(arr) {
     let randomNumber =  Math.floor(Math.random() * arr.length);
-    let randomPhrase = randomNumber[arr].tolowercase()
+    let randomPhrase = arr[randomNumber].toLowerCase();
     let randomSplit = randomPhrase.split('');
     console.log(randomSplit);
     return randomSplit;
@@ -44,7 +45,7 @@ function checkLetter (button) {
     const listItems = document.querySelectorAll('li');
     let match = null;
     for(let i=0; i<listItems.length; i++){
-        if(button.textContent === listItems[i].textContent.tolowercase()){
+        if(button.textContent === listItems[i].textContent.toLowerCase()){
             listItems[i].className = 'show';
             match = button.textContent;
         }
@@ -62,10 +63,28 @@ qwerty.addEventListener ('click', (e) =>{
             const headLost = document.querySelectorAll('.tries img');
             headLost.src = 'img/lostHeart.png';
             headLost.className = 'lost';
+            console.log(headLost);
             missed++;
         }
     }
 });
+
+function checkWin() {
+    const letter = document.querySelector('.letter');
+    const show = document.querySelector('.show');
+   
+
+    if (letter.length === show.length) {
+        overylay.ClassName = 'win'; 
+        title.textContent = 'Your Win';
+        overlay.style.display = 'flex';
+    } else if (missed > 4 ) {
+        overlay.className = 'lose';
+        title.textContent = 'Your Lose';
+        overlay.style.display = 'flex';
+    }
+    
+};
 
 
 
