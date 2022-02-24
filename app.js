@@ -32,8 +32,8 @@ function addPhraseToDisplay (arr) {
         li.textContent =arr[i];
         ul.appendChild(li);
         
-        if(arr[i]===''){
-            li.className = '';
+        if(arr[i]===' '){
+            li.className = 'space';
         }else{
             li.className = 'letter';
         }
@@ -46,7 +46,7 @@ function checkLetter (button) {
     let match = null;
     for(let i=0; i<listItems.length; i++){
         if(button.textContent === listItems[i].textContent.toLowerCase()){
-            listItems[i].className = 'show';
+            listItems[i].classList.add('show');
             match = button.textContent;
         }
     }
@@ -67,6 +67,7 @@ qwerty.addEventListener ('click', (e) =>{
             missed++;
         }
     }
+    checkWin();
 });
 
 function checkWin() {
