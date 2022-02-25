@@ -61,22 +61,20 @@ qwerty.addEventListener ('click', (e) =>{
         const letterFound = checkLetter(btn);
         if (letterFound === null) {
             const headLost = document.querySelectorAll('.tries img');
-            headLost.src = 'img/lostHeart.png';
-            headLost.className = 'lost';
-            console.log(headLost);
+            headLost[missed].src = 'images/lostHeart.png';
+            headLost.className = ' lost';
             missed++;
+            console.log(headLost);
         }
     }
-    checkWin();
+        checkWin();
 });
 
 function checkWin() {
-    const letter = document.querySelector('.letter');
-    const show = document.querySelector('.show');
-   
-
+    const letter = document.querySelectorAll('.letter');
+    const show = document.querySelectorAll('.show');
     if (letter.length === show.length) {
-        overylay.ClassName = 'win'; 
+        overlay.className = 'win'; 
         title.textContent = 'Your Win';
         overlay.style.display = 'flex';
     } else if (missed > 4 ) {
@@ -86,7 +84,7 @@ function checkWin() {
     }
     
 };
-
+ 
 
 
 
